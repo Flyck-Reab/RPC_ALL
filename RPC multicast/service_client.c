@@ -14,15 +14,46 @@
 
 int eachresult(int *out, struct sockaddr_in *addr)
 {
+	/*
+	static char* server;
+	memset(&server,0,sizeof(server));
+	int error=getnameinfo((struct sockaddr*)addr, sizeof(struct sockaddr_storage),server, 16, NULL, 0, NI_NUMERICHOST );
+	if(error!=0)
+	{
+		perror(gai_strerror(error));
+		exit(1);
+	}
+	*/
 	char* serveur = inet_ntoa(addr->sin_addr);
-	printf("%s>>%d\n",serveur ,*out);
+	printf(" coucou %s \n", serveur);
+	printf("Reponse reçue  : %d\n", *out);
 	return 0;
 }
 
 void
-exo1_1(param print_somme_1_arg)
+exo1_1()
 {
+
 	int  *result_1;
+	param  print_somme_1_arg;
+
+	char sentence[1000];
+	printf("lecture a\n");
+    fgets(sentence, sizeof(sentence), stdin);
+    int a = atoi(sentence);
+	printf("lecture b\n");
+    fgets(sentence, sizeof(sentence), stdin);
+    int b = atoi(sentence);
+
+    if(a>b)
+    {
+    	int c=a;
+    	a=b;
+    	b=c;
+    }
+    print_somme_1_arg.borne_inf=a;
+    print_somme_1_arg.borne_sup=b;
+
     printf("appel au client \n");
 	result_1 = print_somme_1(&print_somme_1_arg, eachresult);
 	if (result_1 == (int *) NULL) {
@@ -34,23 +65,6 @@ exo1_1(param print_somme_1_arg)
 int
 main (int argc, char *argv[])
 {
-	param  print_somme_1_arg;
-	char buffer[1024];
-	printf("lecture a\n");
-    fgets(buffer, sizeof(buffer), stdin);
-    int a = atoi(buffer);
-	printf("lecture b\n");
-    fgets(buffer, sizeof(buffer), stdin);
-    int b = atoi(buffer);
-
-    if(a>b)
-    {
-    	int c=a;
-    	a=b;
-    	b=c;
-    }
-	print_somme_1_arg.borne_inf=a;
-    print_somme_1_arg.borne_sup=b;
-	exo1_1 (print_somme_1_arg);
+	exo1_1 ();
 exit (0);
 }

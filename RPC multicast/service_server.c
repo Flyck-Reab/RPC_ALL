@@ -10,15 +10,17 @@ int *
 print_somme_1_svc(param *argp, struct svc_req *rqstp)
 {
 	static int  result=0;
-	int resultat=0;
+	int somme=0;
 
 	int i=argp->borne_inf;
     while(i<=argp->borne_sup)
     {
-        resultat = resultat+i;
+        somme = somme+i;
         i = i+1;
     }
 
-    result=resultat;
+    result=somme;
+    printf("Result : %d\n", result);
+
 	return &result;
 }
