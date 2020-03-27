@@ -1,0 +1,5 @@
+Pour que le programme fonctionne, créer un fichier null.txt dans /dev/
+
+--> Si erreur indiquant une ouverture impossible de null.txt, ne pas hésiter à un faire un $>chmod 777 null.txt, ça résoud tout le problème
+
+Good luck
