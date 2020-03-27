@@ -114,7 +114,7 @@ write_1_svc(write_parm *argp, struct svc_req *rqstp)
 	static int  result;
 	result=0;
 	
-	erreur=verificationInformations(rqstp);
+	result=verificationInformations(rqstp);
 	if(result!=0)
 	{
 		return &result;
